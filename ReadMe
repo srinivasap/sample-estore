@@ -1,0 +1,6 @@
+v0.0.2 - without stale state control headers set
+v0.0.3 - with stale state control headers set
+v0.0.4 - with state state control headers and refresh cache on purge changes
+v0.0.5 - with state state control headers and soft purge changes
+v0.0.6 - with state state control headers and refresh cache on soft purge changes
+v0.0.7 - with state state control headers and refresh cache on soft purge changes - pass endpoint as env property
