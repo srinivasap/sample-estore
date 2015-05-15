@@ -1,4 +1,5 @@
-v0.0.2 - without stale state control headers set
+v0.0.1 - without any control headers
+v0.0.2 - with control headers and without stale state control headers set
 v0.0.3 - with stale state control headers set
 v0.0.4 - with state state control headers and refresh cache on purge changes
 v0.0.5 - with state state control headers and soft purge changes
