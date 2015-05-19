@@ -4,6 +4,7 @@ public class Constants {
 
 	public static final String HTTP_HEADER_CACHE_CONTROL_NAME = "Cache-Control";
 	public static final String HTTP_HEADER_SURROGATE_CONTROL_NAME = "Surrogate-Control";
+	public static final String HTTP_HEADER_SURROGATE_KEY_NAME = "Surrogate-Key";
 	public static final String HTTP_HEADER_SOFT_PURGE_NAME = "Fastly-Soft-Purge";	
 	public static final String HTTP_HEADER_HOST = "Host";
 	

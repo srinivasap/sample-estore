@@ -1,0 +1,1483 @@
+{
+	"id": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+	"name": "estore",
+	"description": "",
+	"order": [
+		"6387eb8b-531b-5867-3d1f-d5a4b548cfb6",
+		"f552fbec-0ae5-91b5-1cc5-62bcdcb29ba5",
+		"bcd7f1c3-67bd-83b9-4c08-ffad3f40f3d7",
+		"958d040d-74bb-4b77-173f-4bd5d9ebf9d6",
+		"2f3a4268-05ae-1709-5d6e-3f9a89e08fbf",
+		"1f5a4fcd-60b6-6828-cbcb-2fe150bff93e",
+		"323bc854-19e9-0f3b-b47b-330adbf30274",
+		"98c72088-5478-2483-9987-ec0d25d2ed2d",
+		"716c8994-b4cc-9d81-252b-e5cf632b9db3",
+		"80872dc5-ac02-8173-40bc-5c6563353831",
+		"6c0d11ff-934c-179b-af20-063ed2d203f3",
+		"ff2a5420-2bf3-6b8f-5d89-c4758201587a",
+		"96562b01-e9ca-bca0-0d11-77332d823aa7",
+		"08a64bfd-d717-cac9-538a-d916626fe16b"
+	],
+	"folders": [],
+	"timestamp": 1430322000614,
+	"synced": false,
+	"owner": "",
+	"subscribed": false,
+	"remoteLink": "",
+	"public": false,
+	"write": true,
+	"requests": [
+		{
+			"id": "08a64bfd-d717-cac9-538a-d916626fe16b",
+			"headers": "",
+			"url": "http://{{host}}:8080/rest/product/6",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413840721,
+			"name": "Product > Delete",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 10,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "DELETE",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "22",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 20:02:50 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{ \"status\": \"success\"}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "dd317a3c-2aa2-bf3d-e5f0-a1bc260a40cb",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/product/6",
+						"pathVariables": {},
+						"data": [],
+						"headers": "",
+						"dataMode": "params",
+						"method": "DELETE",
+						"tests": "",
+						"version": 2
+					}
+				},
+				{
+					"status": "",
+					"responseCode": {
+						"code": 400,
+						"name": "Bad Request",
+						"detail": "The request cannot be fulfilled due to bad syntax."
+					},
+					"time": 481,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "DELETE",
+							"description": "Custom header"
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "49",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Thu, 30 Apr 2015 06:01:44 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{ \"status\": \"no product records found by id - 6\"}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "5209f484-3f49-6aa3-7573-06c086d0cf3b",
+					"name": "error",
+					"request": {
+						"url": "http://localhost:8080/rest/product/6",
+						"pathVariables": {},
+						"data": [],
+						"headers": "",
+						"dataMode": "params",
+						"method": "DELETE",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false
+		},
+		{
+			"id": "1f5a4fcd-60b6-6828-cbcb-2fe150bff93e",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://{{host}}:8080/rest/order",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413812011,
+			"name": "Order > Create",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 11,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "CREATE",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Thu, 30 Apr 2015 00:58:21 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":4,\"customer\":{\"id\":1,\"firstname\":\"abc\",\"lastname\":\"001\",\"emailAddress\":\"abc001@estore.com\",\"addresses\":[{\"id\":1,\"street\":\"123 Mathilda\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},{\"id\":2,\"street\":\"123 Evelyn\",\"city\":\"Sunnyvale\",\"country\":\"United States\"}]},\"billingAddress\":{\"id\":5,\"street\":\"123 Mathilda\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},\"shippingAddress\":{\"id\":5,\"street\":\"123 Mathilda\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},\"lineItems\":[{\"id\":5,\"product\":{\"id\":2,\"name\":\"MacBook Pro\",\"description\":\"Apple notebook\",\"price\":1299,\"attributes\":{}},\"amount\":1,\"total\":1299,\"unitPrice\":1299}],\"total\":1299}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "02be387a-a12d-9edf-6a29-ff5384de11a2",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/order",
+						"pathVariables": {},
+						"data": "{\n  \"customer\": {\n    \"id\": 1\n  },\n  \"lineItems\": [\n    {\n      \"product\": {\n        \"id\": 2,\n        \"name\": \"MacBook Pro\",\n        \"description\": \"Apple notebook\",\n        \"price\": 1299,\n        \"attributes\": {}\n      },\n      \"amount\": 1,\n      \"unitPrice\": 1299\n    }\n  ]\n}",
+						"headers": "Content-Type: application/json\n",
+						"dataMode": "raw",
+						"method": "POST",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false,
+			"rawModeData": "{\n  \"customer\": {\n    \"id\": 1\n  },\n  \"lineItems\": [\n    {\n      \"product\": {\n        \"id\": 2,\n        \"name\": \"MacBook Pro\",\n        \"description\": \"Apple notebook\",\n        \"price\": 1299,\n        \"attributes\": {}\n      },\n      \"amount\": 1,\n      \"unitPrice\": 1299\n    }\n  ]\n}"
+		},
+		{
+			"id": "2f3a4268-05ae-1709-5d6e-3f9a89e08fbf",
+			"headers": "",
+			"url": "http://{{host}}:8080/rest/customer?profile_id=abc100@estore.com",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413808603,
+			"name": "Customer > Delete",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 400,
+						"name": "Bad Request",
+						"detail": "The request cannot be fulfilled due to bad syntax."
+					},
+					"time": 8,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "DELETE",
+							"description": "Custom header"
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "74",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 18:47:32 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{ \"status\": \"no customer records found by profile id - abc100@estore.com\"}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "a406221f-5072-c65f-4cf3-b8fdbfe12b92",
+					"name": "error",
+					"request": {
+						"url": "http://localhost:8080/rest/customer?profile_id=abc100@estore.com",
+						"pathVariables": {},
+						"data": [],
+						"headers": "",
+						"dataMode": "params",
+						"method": "DELETE",
+						"tests": "",
+						"version": 2
+					}
+				},
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 479,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "DELETE",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "22",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Thu, 30 Apr 2015 05:59:50 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{ \"status\": \"success\"}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "afef2568-b317-482c-3c2d-3d31c19ce9dd",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/customer?profile_id=abc004@estore.com",
+						"pathVariables": {},
+						"data": [],
+						"headers": "",
+						"dataMode": "params",
+						"method": "DELETE",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false
+		},
+		{
+			"id": "323bc854-19e9-0f3b-b47b-330adbf30274",
+			"headers": "",
+			"url": "http://{{host}}:8080/rest/order/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413816108,
+			"name": "Order > Read",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 15,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "FETCH",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 22:18:52 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":1,\"customer\":{\"id\":1,\"firstname\":\"abc\",\"lastname\":\"001\",\"emailAddress\":\"abc001@estore.com\",\"addresses\":[{\"id\":1,\"street\":\"123 Mathilda\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},{\"id\":2,\"street\":\"123 Evelyn\",\"city\":\"Sunnyvale\",\"country\":\"United States\"}]},\"billingAddress\":{\"id\":2,\"street\":\"123 Evelyn\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},\"shippingAddress\":{\"id\":2,\"street\":\"123 Evelyn\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},\"lineItems\":[{\"id\":1,\"product\":{\"id\":1,\"name\":\"iPad\",\"description\":\"Apple tablet device\",\"price\":499.00,\"attributes\":{\"connector\":\"socket\"}},\"amount\":2,\"unitPrice\":499.00,\"total\":998.00},{\"id\":2,\"product\":{\"id\":2,\"name\":\"MacBook Pro\",\"description\":\"Apple notebook\",\"price\":1299.00,\"attributes\":{}},\"amount\":1,\"unitPrice\":1299.00,\"total\":1299.00}],\"total\":2297.00}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "847d3406-2307-0552-bedf-ff489572a937",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/order/1",
+						"pathVariables": {},
+						"data": [],
+						"headers": "",
+						"dataMode": "params",
+						"method": "GET",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false
+		},
+		{
+			"id": "6387eb8b-531b-5867-3d1f-d5a4b548cfb6",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://{{host}}:8080/rest/customer",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413794554,
+			"name": "Customer > Create",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 239,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "CREATE",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 18:04:27 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":4,\"firstname\":\"abc\",\"lastname\":\"004\",\"emailAddress\":\"abc004@estore.com\",\"addresses\":[{\"id\":3,\"street\":\"123 California\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},{\"id\":4,\"street\":\"123 Reed\",\"city\":\"Sunnyvale\",\"country\":\"United States\"}]}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "d438aec5-3108-7185-32a3-73457394414e",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/customer",
+						"pathVariables": {},
+						"data": "{\n  \"firstname\": \"abc\",\n  \"lastname\": \"004\",\n  \"emailAddress\": \"abc004@estore.com\",\n  \"addresses\": [\n    {\n      \"street\": \"123 California\",\n      \"city\": \"Sunnyvale\",\n      \"country\": \"United States\"\n    },\n    {\n      \"street\": \"123 Reed\",\n      \"city\": \"Sunnyvale\",\n      \"country\": \"United States\"\n    }\n  ]\n}",
+						"headers": "Content-Type: application/json\n",
+						"dataMode": "raw",
+						"method": "POST",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false,
+			"rawModeData": "{\n  \"firstname\": \"abc\",\n  \"lastname\": \"004\",\n  \"emailAddress\": \"abc004@estore.com\",\n  \"addresses\": [\n    {\n      \"street\": \"123 California\",\n      \"city\": \"Sunnyvale\",\n      \"country\": \"United States\"\n    },\n    {\n      \"street\": \"123 Reed\",\n      \"city\": \"Sunnyvale\",\n      \"country\": \"United States\"\n    }\n  ]\n}"
+		},
+		{
+			"id": "6c0d11ff-934c-179b-af20-063ed2d203f3",
+			"headers": "",
+			"url": "http://{{host}}:8080/rest/product/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413831084,
+			"name": "Product > Read",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 9,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "FETCH",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 19:57:56 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":1,\"name\":\"iPad\",\"description\":\"Apple tablet device\",\"price\":499.00,\"attributes\":{\"connector\":\"socket\"}}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "ae5a8a85-131d-4a92-fbfe-cfa729159e27",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/product/1",
+						"pathVariables": {},
+						"data": [],
+						"headers": "",
+						"dataMode": "params",
+						"method": "GET",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false
+		},
+		{
+			"id": "716c8994-b4cc-9d81-252b-e5cf632b9db3",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://{{host}}:8080/rest/order/1",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430520739454,
+			"name": "Order > Update",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 537,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "UPDATE",
+							"description": "Custom header"
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "Keep-Alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Fri, 01 May 2015 22:52:04 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"name": "X-Target-Proxy",
+							"key": "X-Target-Proxy",
+							"value": "Transparent-PXYSGC04",
+							"description": "Custom header"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":1,\"customer\":{\"id\":1,\"firstname\":\"abc\",\"lastname\":\"011\",\"emailAddress\":\"abc001@estore.com\",\"addresses\":[{\"id\":1,\"street\":\"123 Mathilda 001\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},{\"id\":2,\"street\":\"123 Evelyn 001\",\"city\":\"Sunnyvale\",\"country\":\"United States\"}]},\"billingAddress\":{\"id\":2,\"street\":\"123 Evelyn 001\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},\"shippingAddress\":{\"id\":2,\"street\":\"123 Evelyn 001\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},\"lineItems\":[{\"id\":1,\"product\":{\"id\":1,\"name\":\"iPad\",\"description\":\"Apple tablet device\",\"price\":499.00,\"attributes\":{\"connector\":\"socket\"}},\"amount\":6,\"unitPrice\":499.00,\"total\":2994.00},{\"id\":2,\"product\":{\"id\":2,\"name\":\"MacBook Pro\",\"description\":\"Apple notebook\",\"price\":1299.00,\"attributes\":{}},\"amount\":5,\"unitPrice\":1299.00,\"total\":6495.00}],\"total\":9489.00}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "0e937564-ccfa-8fb7-0306-181e91b93a20",
+					"name": "success",
+					"request": {
+						"url": "http://{{host}}:8080/rest/order/1",
+						"pathVariables": {},
+						"data": "{\n  \"customer\": {\n    \"id\": 1\n  },\n  \"lineItems\": [\n    {\n      \"id\": 1,\n      \"product\": {\n        \"id\": 1,\n        \"name\": \"iPad\",\n        \"description\": \"Apple tablet device\",\n        \"price\": 499,\n        \"attributes\": {\n          \"connector\": \"socket\"\n        }\n      },\n      \"amount\": 6,\n      \"unitPrice\": 499,\n      \"total\": 1497\n    },\n    {\n      \"id\": 2,\n      \"product\": {\n        \"id\": 2,\n        \"name\": \"MacBook Pro\",\n        \"description\": \"Apple notebook\",\n        \"price\": 1299,\n        \"attributes\": {}\n      },\n      \"amount\": 5,\n      \"unitPrice\": 1299,\n      \"total\": 1299\n    }\n  ]\n}",
+						"headers": "Content-Type: application/json\n",
+						"dataMode": "raw",
+						"method": "PUT",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false,
+			"rawModeData": "{\n  \"customer\": {\n    \"id\": 1\n  },\n  \"lineItems\": [\n    {\n      \"id\": 1,\n      \"product\": {\n        \"id\": 1,\n        \"name\": \"iPad\",\n        \"description\": \"Apple tablet device\",\n        \"price\": 499,\n        \"attributes\": {\n          \"connector\": \"socket\"\n        }\n      },\n      \"amount\": 6,\n      \"unitPrice\": 499,\n      \"total\": 1497\n    },\n    {\n      \"id\": 2,\n      \"product\": {\n        \"id\": 2,\n        \"name\": \"MacBook Pro\",\n        \"description\": \"Apple notebook\",\n        \"price\": 1299,\n        \"attributes\": {}\n      },\n      \"amount\": 5,\n      \"unitPrice\": 1299,\n      \"total\": 1299\n    }\n  ]\n}"
+		},
+		{
+			"id": "80872dc5-ac02-8173-40bc-5c6563353831",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://{{host}}:8080/rest/product",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413827990,
+			"name": "Product > Create",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 11,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "CREATE",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 20:00:05 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":5,\"name\":\"iPhone 6\",\"description\":\"Apple iphone device\",\"price\":799,\"attributes\":{\"connector\":\"phone\"}}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "719604d8-4410-a035-677f-5ea5e55fa2db",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/product",
+						"pathVariables": {},
+						"data": "{\n  \"name\": \"iPhone 6\",\n  \"description\": \"Apple iphone device\",\n  \"price\": 799,\n  \"attributes\": {\n    \"connector\": \"phone\"\n  }\n}",
+						"headers": "Content-Type: application/json\n",
+						"dataMode": "raw",
+						"method": "POST",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false,
+			"rawModeData": "{\n  \"name\": \"iPhone 6\",\n  \"description\": \"Apple iphone device\",\n  \"price\": 799,\n  \"attributes\": {\n    \"connector\": \"phone\"\n  }\n}"
+		},
+		{
+			"id": "958d040d-74bb-4b77-173f-4bd5d9ebf9d6",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://{{host}}:8080/rest/customer?profile_id=abc001@estore.com",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413806090,
+			"name": "Customer > Update",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 11,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "UPDATE",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 18:08:23 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":1,\"firstname\":\"abc\",\"lastname\":\"011\",\"emailAddress\":\"abc001@estore.com\",\"addresses\":[{\"id\":1,\"street\":\"123 Mathilda 001\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},{\"id\":2,\"street\":\"123 Evelyn 001\",\"city\":\"Sunnyvale\",\"country\":\"United States\"}]}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "c0a5fa83-ab49-d449-5c7d-261d67e8202c",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/customer?profile_id=abc001@estore.com",
+						"pathVariables": {},
+						"data": "{\n    \"id\": 1,\n    \"firstname\": \"abc\",\n    \"lastname\": \"011\",\n    \"emailAddress\": \"abc001@estore.com\",\n    \"addresses\": [\n      {\n        \"id\": 1,\n        \"street\": \"123 Mathilda 001\",\n        \"city\": \"Sunnyvale\",\n        \"country\": \"United States\"\n      },\n      {\n        \"id\": 2,\n        \"street\": \"123 Evelyn 001\",\n        \"city\": \"Sunnyvale\",\n        \"country\": \"United States\"\n      }\n    ]\n  }",
+						"headers": "Content-Type: application/json\n",
+						"dataMode": "raw",
+						"method": "PUT",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false,
+			"rawModeData": "{\n    \"id\": 1,\n    \"firstname\": \"abc\",\n    \"lastname\": \"011\",\n    \"emailAddress\": \"abc001@estore.com\",\n    \"addresses\": [\n      {\n        \"id\": 1,\n        \"street\": \"123 Mathilda 001\",\n        \"city\": \"Sunnyvale\",\n        \"country\": \"United States\"\n      },\n      {\n        \"id\": 2,\n        \"street\": \"123 Evelyn 001\",\n        \"city\": \"Sunnyvale\",\n        \"country\": \"United States\"\n      }\n    ]\n  }"
+		},
+		{
+			"id": "96562b01-e9ca-bca0-0d11-77332d823aa7",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://{{host}}:8080/rest/product/5",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413837735,
+			"name": "Product > Update",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 15,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "UPDATE",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 20:00:58 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"id\":7,\"name\":\"iPhone 6+\",\"description\":\"Apple iphone 6 plus device\",\"price\":899,\"attributes\":{\"connector\":\"phone\"}}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "6011f0d3-4717-1823-0499-d662eb5f57cc",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/product/5",
+						"pathVariables": {},
+						"data": "{\n  \"name\": \"iPhone 6+\",\n  \"description\": \"Apple iphone 6 plus device\",\n  \"price\": 899,\n  \"attributes\": {\n    \"connector\": \"phone\"\n  }\n}",
+						"headers": "Content-Type: application/json\n",
+						"dataMode": "raw",
+						"method": "PUT",
+						"tests": "",
+						"version": 2
+					}
+				},
+				{
+					"status": "",
+					"responseCode": {
+						"code": 400,
+						"name": "Bad Request",
+						"detail": "The request cannot be fulfilled due to bad syntax."
+					},
+					"time": 467,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "UPDATE",
+							"description": "Custom header"
+						},
+						{
+							"name": "Connection",
+							"key": "Connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "Content-Length",
+							"key": "Content-Length",
+							"value": "49",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Thu, 30 Apr 2015 06:01:27 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{ \"status\": \"no product records found by id - 5\"}",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "caaaa167-bc03-c7b1-67c7-387289899e65",
+					"name": "error",
+					"request": {
+						"url": "http://localhost:8080/rest/product/",
+						"pathVariables": {},
+						"data": "{\n  \"name\": \"iPhone 6+\",\n  \"description\": \"Apple iphone 6 plus device\",\n  \"price\": 899,\n  \"attributes\": {\n    \"connector\": \"phone\"\n  }\n}",
+						"headers": "Content-Type: application/json\n",
+						"dataMode": "raw",
+						"method": "PUT",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false,
+			"rawModeData": "{\n  \"name\": \"iPhone 6+\",\n  \"description\": \"Apple iphone 6 plus device\",\n  \"price\": 899,\n  \"attributes\": {\n    \"connector\": \"phone\"\n  }\n}"
+		},
+		{
+			"id": "98c72088-5478-2483-9987-ec0d25d2ed2d",
+			"headers": "",
+			"url": "http://{{host}}:8080/rest/order/search",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413821588,
+			"name": "Order > Search",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 14,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "SEARCH",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 19:20:59 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[{\"id\":1,\"customer\":{\"id\":1,\"firstname\":\"abc\",\"lastname\":\"001\",\"emailAddress\":\"abc001@estore.com\",\"addresses\":[{\"id\":1,\"street\":\"123 Mathilda\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},{\"id\":2,\"street\":\"123 Evelyn\",\"city\":\"Sunnyvale\",\"country\":\"United States\"}]},\"billingAddress\":{\"id\":2,\"street\":\"123 Evelyn\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},\"shippingAddress\":{\"id\":2,\"street\":\"123 Evelyn\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},\"lineItems\":[{\"id\":1,\"product\":{\"id\":1,\"name\":\"iPad\",\"description\":\"Apple tablet device\",\"price\":499.00,\"attributes\":{\"connector\":\"socket\"}},\"amount\":2,\"unitPrice\":499.00,\"total\":998.00},{\"id\":2,\"product\":{\"id\":2,\"name\":\"MacBook Pro\",\"description\":\"Apple notebook\",\"price\":1299.00,\"attributes\":{}},\"amount\":1,\"unitPrice\":1299.00,\"total\":1299.00}],\"total\":2297.00}]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "5b875c72-fe2a-cb7a-1058-4dcbf3b964e4",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/order/search",
+						"pathVariables": {},
+						"data": [],
+						"headers": "",
+						"dataMode": "params",
+						"method": "GET",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false
+		},
+		{
+			"id": "bcd7f1c3-67bd-83b9-4c08-ffad3f40f3d7",
+			"headers": "",
+			"url": "http://{{host}}:8080/rest/customer/search",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413800180,
+			"name": "Customer > Search",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 19,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "FETCH",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 18:05:17 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[{\"id\":1,\"firstname\":\"abc\",\"lastname\":\"001\",\"emailAddress\":\"abc001@estore.com\",\"addresses\":[{\"id\":1,\"street\":\"123 Mathilda\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},{\"id\":2,\"street\":\"123 Evelyn\",\"city\":\"Sunnyvale\",\"country\":\"United States\"}]},{\"id\":2,\"firstname\":\"abc\",\"lastname\":\"002\",\"emailAddress\":\"abc002@estore.com\",\"addresses\":[]},{\"id\":3,\"firstname\":\"abc\",\"lastname\":\"003\",\"emailAddress\":\"abc003@estore.com\",\"addresses\":[]},{\"id\":4,\"firstname\":\"abc\",\"lastname\":\"004\",\"emailAddress\":\"abc004@estore.com\",\"addresses\":[{\"id\":3,\"street\":\"123 California\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},{\"id\":4,\"street\":\"123 Reed\",\"city\":\"Sunnyvale\",\"country\":\"United States\"}]}]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "cb88b994-6d96-4d82-f802-322e67ff7760",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/customer/search",
+						"pathVariables": {},
+						"data": [],
+						"headers": "",
+						"dataMode": "params",
+						"method": "GET",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false
+		},
+		{
+			"id": "f552fbec-0ae5-91b5-1cc5-62bcdcb29ba5",
+			"headers": "",
+			"url": "http://{{host}}:8080/rest/customer?profile_id=abc001@estore.com",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413797387,
+			"name": "Customer > Read",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 25,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "FETCH",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 18:05:01 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[{\"id\":1,\"firstname\":\"abc\",\"lastname\":\"001\",\"emailAddress\":\"abc001@estore.com\",\"addresses\":[{\"id\":1,\"street\":\"123 Mathilda\",\"city\":\"Sunnyvale\",\"country\":\"United States\"},{\"id\":2,\"street\":\"123 Evelyn\",\"city\":\"Sunnyvale\",\"country\":\"United States\"}]}]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "c0e05aef-a1c2-a660-e9c0-1e451ff5c19a",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/customer?profile_id=abc001@estore.com",
+						"pathVariables": {},
+						"data": [],
+						"headers": "",
+						"dataMode": "params",
+						"method": "GET",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false
+		},
+		{
+			"id": "ff2a5420-2bf3-6b8f-5d89-c4758201587a",
+			"headers": "",
+			"url": "http://{{host}}:8080/rest/product/search",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1430413834357,
+			"name": "Product > Search",
+			"description": "",
+			"collectionId": "5bde563b-48a0-0c79-85f9-aa6ce743dfac",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 11,
+					"headers": [
+						{
+							"name": "ACTION",
+							"key": "ACTION",
+							"value": "SEARCH",
+							"description": "Custom header"
+						},
+						{
+							"name": "Content-Type",
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "Date",
+							"key": "Date",
+							"value": "Wed, 29 Apr 2015 19:57:14 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "Server",
+							"key": "Server",
+							"value": "Apache-Coyote/1.1",
+							"description": "A name for the server"
+						},
+						{
+							"name": "Transfer-Encoding",
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "[{\"id\":1,\"name\":\"iPad\",\"description\":\"Apple tablet device\",\"price\":499.00,\"attributes\":{\"connector\":\"socket\"}},{\"id\":2,\"name\":\"MacBook Pro\",\"description\":\"Apple notebook\",\"price\":1299.00,\"attributes\":{}},{\"id\":3,\"name\":\"Dock\",\"description\":\"Dock for iPhone/iPad\",\"price\":49.00,\"attributes\":{\"connector\":\"plug\"}}]",
+					"language": "javascript",
+					"rawDataType": "text",
+					"state": {
+						"size": "normal"
+					},
+					"previewType": "html",
+					"searchResultScrolledTo": -1,
+					"forceRaw": false,
+					"write": true,
+					"runTests": true,
+					"id": "a987cea8-ead3-d184-5f52-9ae0e6794899",
+					"name": "success",
+					"request": {
+						"url": "http://localhost:8080/rest/product/search",
+						"pathVariables": {},
+						"data": [],
+						"headers": "",
+						"dataMode": "params",
+						"method": "GET",
+						"tests": "",
+						"version": 2
+					}
+				}
+			],
+			"synced": false
+		}
+	]
+}

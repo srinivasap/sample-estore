@@ -45,6 +45,10 @@ public class OrderController {
 	@Autowired
 	@Value("${endpoint}")
 	private String endpoint;
+
+	@Autowired
+	@Value("${fastly.service.id}")
+	private String fastlyServiceId;
 	
 	// create
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -80,12 +84,14 @@ public class OrderController {
 			for (LineItem item : items) {
 				//itemEntities.add(lineItemRepo.save(item));
 				entity.add(new LineItem(item.getProduct(), item.getAmount()));
+				
 			}
 		}
 		Order response = orderRepo.save(entity);
 		
 		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/rest/order/search");
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/order/search");
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/orders");
 		
 		//update cache
 		HttpGetClient.call("http://"+endpoint+"/rest/order/search");
@@ -103,6 +109,16 @@ public class OrderController {
 		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_CONTROL_NAME, Constants.HTTP_HEADER_SURROGATE_CONTROL_SERVER_STALE);
 		
 		Order response = orderRepo.findOne(orderId);
+		
+		// surrogate-key builder
+		StringBuilder surrogateKeys = new StringBuilder();
+		surrogateKeys.append("order-").append(orderId);
+		surrogateKeys.append(" customer-").append(response.getCustomer().getId());
+		for (LineItem item : response.getLineItems()) {
+			surrogateKeys.append(" product-").append(item.getProduct().getId()).append(" ");
+		}	
+		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_KEY_NAME, surrogateKeys.toString());		
+		
 		return new ResponseEntity<Order>(response, responseHeaders, HttpStatus.OK);
 	}
 	
@@ -114,6 +130,7 @@ public class OrderController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.set(Constants.HTTP_HEADER_CACHE_CONTROL_NAME, Constants.HTTP_HEADER_CACHE_CONTROL_NO_CACHE);
 		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_CONTROL_NAME, Constants.HTTP_HEADER_SURROGATE_CONTROL_SERVER_STALE);
+		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_KEY_NAME, "orders");
 		
 		Iterable<Order> response = orderRepo.findAll();
 		return new ResponseEntity<Iterable<Order>>(response, responseHeaders, HttpStatus.OK);
@@ -126,7 +143,7 @@ public class OrderController {
 
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.set(Constants.HTTP_HEADER_CACHE_CONTROL_NAME, Constants.HTTP_HEADER_CACHE_CONTROL_NO_CACHE);
-		
+				
 		Order entity = orderRepo.findOne(orderId);
 		if (order == null || entity == null) {
 			LOG.error("Invalid order update request.");
@@ -148,8 +165,10 @@ public class OrderController {
 		Order response = orderRepo.save(entity);
 
 		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/rest/order/"+orderId);
-		HttpPurgeClient.call("http://"+endpoint+"/rest/order/search");
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/order-"+orderId);
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/orders");
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/order/"+orderId);
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/order/search");
 		
 		//update cache
 		HttpGetClient.call("http://"+endpoint+"/rest/order/"+orderId);
@@ -159,7 +178,6 @@ public class OrderController {
 	}
 	
 	// delete
-	// TODO: Fix duplicate profile_id
 	@RequestMapping(value="/{order_id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> deleteOrder(@PathVariable(value="order_id") long orderId) {
 		LOG.debug("Deleting order by <"+orderId+">");
@@ -175,8 +193,10 @@ public class OrderController {
 		orderRepo.delete(entity);
 
 		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/rest/order/"+orderId);
-		HttpPurgeClient.call("http://"+endpoint+"/rest/order/search");
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/order-"+orderId);
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/orders");
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/order/"+orderId);
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/order/search");
 
 		//update cache
 		HttpGetClient.call("http://"+endpoint+"/rest/order/"+orderId);

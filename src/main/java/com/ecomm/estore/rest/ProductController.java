@@ -30,6 +30,10 @@ public class ProductController {
 	@Autowired
 	@Value("${endpoint}")
 	private String endpoint;
+
+	@Autowired
+	@Value("${fastly.service.id}")
+	private String fastlyServiceId;
 	
 	// create
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -46,7 +50,8 @@ public class ProductController {
 		
 		Product response = productRepo.save(product);
 		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/rest/product/search");
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/products");
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/product/search");
 		
 		return new ResponseEntity<Product>(response, responseHeaders, HttpStatus.OK);
 	}
@@ -59,6 +64,7 @@ public class ProductController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.set(Constants.HTTP_HEADER_CACHE_CONTROL_NAME, Constants.HTTP_HEADER_CACHE_CONTROL_NO_CACHE);
 		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_CONTROL_NAME, Constants.HTTP_HEADER_SURROGATE_CONTROL_SERVER_STALE);
+		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_KEY_NAME, "product-"+productId);
 		
 		Product response = productRepo.findOne(productId);
 		return new ResponseEntity<Product>(response, responseHeaders, HttpStatus.OK);
@@ -72,6 +78,7 @@ public class ProductController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.set(Constants.HTTP_HEADER_CACHE_CONTROL_NAME, Constants.HTTP_HEADER_CACHE_CONTROL_NO_CACHE);
 		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_CONTROL_NAME, Constants.HTTP_HEADER_SURROGATE_CONTROL_SERVER_STALE);
+		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_KEY_NAME, "products");
 		
 		Iterable<Product> response = productRepo.findAll();
 		return new ResponseEntity<Iterable<Product>>(response, responseHeaders, HttpStatus.OK);
@@ -93,8 +100,10 @@ public class ProductController {
 		
 		Product response = productRepo.save(product);
 		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/rest/product/"+productId);
-		HttpPurgeClient.call("http://"+endpoint+"/rest/product/search");
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/product-"+productId);
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/products");
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/product/"+productId);
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/product/search");
 		
 		return new ResponseEntity<Product>(response, responseHeaders, HttpStatus.OK);
 	}
@@ -115,8 +124,10 @@ public class ProductController {
 		}
 		productRepo.delete(entity);
 		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/rest/product/"+productId);
-		HttpPurgeClient.call("http://"+endpoint+"/rest/product/search");
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/product-"+productId);
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/products");
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/product/"+productId);
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/product/search");
 		
 		return new ResponseEntity<String>("{ \"status\": \"success\"}", responseHeaders, HttpStatus.OK);
 	}

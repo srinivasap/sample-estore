@@ -32,6 +32,10 @@ public class CustomerController {
 	@Value("${endpoint}")
 	private String endpoint;
 	
+	@Autowired
+	@Value("${fastly.service.id}")
+	private String fastlyServiceId;
+	
 	// create
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> createProfile(@RequestBody(required=true) Customer customer) {
@@ -47,7 +51,8 @@ public class CustomerController {
 		Customer response = customerRepo.save(customer);
 		
 		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/rest/customer/search");
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/customers");
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/customer/search");
 		
 		return new ResponseEntity<Customer>(response, responseHeaders, HttpStatus.OK);
 	}
@@ -62,7 +67,15 @@ public class CustomerController {
 		responseHeaders.set(Constants.HTTP_HEADER_CACHE_CONTROL_NAME, Constants.HTTP_HEADER_CACHE_CONTROL_NO_CACHE);
 		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_CONTROL_NAME, Constants.HTTP_HEADER_SURROGATE_CONTROL_SERVER_STALE);
 		
+		// surrogate-key builder
+		StringBuilder surrogateKeys = new StringBuilder();
+		
 		Iterable<Customer> response = customerRepo.findByEmailAddress(new EmailAddress(profileId));
+		for (Customer cust : response) {
+			surrogateKeys.append("customer-").append(cust.getId()).append(" ");
+		}
+		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_KEY_NAME, surrogateKeys.toString());
+				
 		return new ResponseEntity<Iterable<Customer>>(response, responseHeaders, HttpStatus.OK);
 	}
 	
@@ -75,6 +88,7 @@ public class CustomerController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.set(Constants.HTTP_HEADER_CACHE_CONTROL_NAME, Constants.HTTP_HEADER_CACHE_CONTROL_NO_CACHE);
 		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_CONTROL_NAME, Constants.HTTP_HEADER_SURROGATE_CONTROL_SERVER_STALE);
+		responseHeaders.set(Constants.HTTP_HEADER_SURROGATE_KEY_NAME, "customers");
 		
 		Iterable<Customer> response = customerRepo.findAll();
 		return new ResponseEntity<Iterable<Customer>>(response, responseHeaders, HttpStatus.OK);
@@ -97,8 +111,10 @@ public class CustomerController {
 		
 		Customer response = customerRepo.save(customer);
 		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/rest/customer?profile_id="+profileId);
-		HttpPurgeClient.call("http://"+endpoint+"/rest/customer/search");
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/customer-"+response.getId());
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/customers");
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/customer?profile_id="+profileId);
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/customer/search");
 		
 		return new ResponseEntity<Customer>(response, responseHeaders, HttpStatus.OK);
 	}
@@ -117,11 +133,14 @@ public class CustomerController {
 			LOG.error("No customer data found by profile id <"+profileId+">");
             return new ResponseEntity<String>("{ \"status\": \"no customer records found by profile id - "+profileId+"\"}", responseHeaders, HttpStatus.BAD_REQUEST);
 		}
+		long custId = entities.iterator().next().getId();
 		customerRepo.delete(entities);
 		
 		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/rest/customer?profile_id="+profileId);
-		HttpPurgeClient.call("http://"+endpoint+"/rest/customer/search");
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/customer-"+custId);
+		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/customers");
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/customer?profile_id="+profileId);
+		//HttpPurgeClient.call("http://"+endpoint+"/rest/customer/search");
 		
 		return new ResponseEntity<String>("{ \"status\": \"success\"}", responseHeaders, HttpStatus.OK);
 	}

@@ -7,5 +7,6 @@ v0.0.4 - with TTL and state state control headers; hard purge cache on data chan
 v0.0.5 - with TTL and state state control headers; soft purge cache on data changes
 v0.0.6 - with TTL and state state control headers; soft purge cache on data changes and refresh cache with backend GET calls
 v0.0.7 - re-factored
+v0.0.8 - with TTL, surrogate-keys, state state control headers; soft purge cache on data changes using surrogate-key and refresh cache with backend GET calls
 
-Run: nohup java -Xmx2048m -Xms2048m -Dendpoint="<fastly-end-point>" -jar estore-0.0.7-SNAPSHOT.jar & 
+Run: nohup java -Xmx2048m -Xms2048m -Dendpoint="<fastly-end-point>" -Dfastly.service.id="<fastly-service-id>" -jar estore-0.0.8-SNAPSHOT.jar & 
