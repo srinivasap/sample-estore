@@ -2,7 +2,6 @@ package com.ecomm.estore.rest;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ecomm.estore.data.Product;
 import com.ecomm.estore.data.repo.ProductRepository;
 import com.ecomm.estore.util.Constants;
-import com.ecomm.estore.util.HttpPurgeClient;
 
 @RestController
 @RequestMapping("rest/product")
@@ -26,14 +24,6 @@ public class ProductController {
 	
 	@Autowired
 	private ProductRepository productRepo;
-
-	@Autowired
-	@Value("${endpoint}")
-	private String endpoint;
-
-	@Autowired
-	@Value("${fastly.service.id}")
-	private String fastlyServiceId;
 	
 	// create
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -49,9 +39,6 @@ public class ProductController {
 		}
 		
 		Product response = productRepo.save(product);
-		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/products");
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/product/search");
 		
 		return new ResponseEntity<Product>(response, responseHeaders, HttpStatus.OK);
 	}
@@ -99,11 +86,6 @@ public class ProductController {
 		}
 		
 		Product response = productRepo.save(product);
-		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/product-"+productId);
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/products");
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/product/"+productId);
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/product/search");
 		
 		return new ResponseEntity<Product>(response, responseHeaders, HttpStatus.OK);
 	}
@@ -120,14 +102,9 @@ public class ProductController {
 		Product entity = productRepo.findOne(productId);	
 		if (entity == null) {
 			LOG.error("No product data found by id <"+productId+">");
-            return new ResponseEntity<String>("{ \"status\": \"no product records found by id - "+productId+"\"}", responseHeaders, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("{ \"status\": \"no product records found by id - "+productId+"\"}", responseHeaders, HttpStatus.BAD_REQUEST);
 		}
 		productRepo.delete(entity);
-		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/product-"+productId);
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/products");
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/product/"+productId);
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/product/search");
 		
 		return new ResponseEntity<String>("{ \"status\": \"success\"}", responseHeaders, HttpStatus.OK);
 	}

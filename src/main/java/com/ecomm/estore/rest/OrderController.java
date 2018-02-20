@@ -5,7 +5,6 @@ import java.util.Set;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,8 +23,6 @@ import com.ecomm.estore.data.repo.CustomerRepository;
 import com.ecomm.estore.data.repo.LineItemRepository;
 import com.ecomm.estore.data.repo.OrderRepository;
 import com.ecomm.estore.util.Constants;
-import com.ecomm.estore.util.HttpGetClient;
-import com.ecomm.estore.util.HttpPurgeClient;
 
 @RestController
 @RequestMapping("rest/order")
@@ -41,14 +38,6 @@ public class OrderController {
 	
 	@Autowired
 	private CustomerRepository customerRepo;
-	
-	@Autowired
-	@Value("${endpoint}")
-	private String endpoint;
-
-	@Autowired
-	@Value("${fastly.service.id}")
-	private String fastlyServiceId;
 	
 	// create
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -88,13 +77,6 @@ public class OrderController {
 			}
 		}
 		Order response = orderRepo.save(entity);
-		
-		// purge cache
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/order/search");
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/orders");
-		
-		//update cache
-		HttpGetClient.call("http://"+endpoint+"/rest/order/search");
 		
 		return new ResponseEntity<Order>(response, responseHeaders, HttpStatus.OK);
 	}
@@ -163,16 +145,6 @@ public class OrderController {
 			}
 		}
 		Order response = orderRepo.save(entity);
-
-		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/order-"+orderId);
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/orders");
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/order/"+orderId);
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/order/search");
-		
-		//update cache
-		HttpGetClient.call("http://"+endpoint+"/rest/order/"+orderId);
-		HttpGetClient.call("http://"+endpoint+"/rest/order/search");
 		
 		return new ResponseEntity<Order>(response, responseHeaders, HttpStatus.OK);
 	}
@@ -191,16 +163,6 @@ public class OrderController {
             return new ResponseEntity<String>("{ \"status\": \"no order records found by id - "+orderId+"\"}", responseHeaders, HttpStatus.BAD_REQUEST);
 		}
 		orderRepo.delete(entity);
-
-		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/order-"+orderId);
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/orders");
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/order/"+orderId);
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/order/search");
-
-		//update cache
-		HttpGetClient.call("http://"+endpoint+"/rest/order/"+orderId);
-		HttpGetClient.call("http://"+endpoint+"/rest/order/search");
 		
 		return new ResponseEntity<String>("{ \"status\": \"success\"}", responseHeaders, HttpStatus.OK);
 	}

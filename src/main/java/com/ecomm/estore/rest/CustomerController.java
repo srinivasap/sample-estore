@@ -2,7 +2,6 @@ package com.ecomm.estore.rest;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,7 +16,6 @@ import com.ecomm.estore.data.Customer;
 import com.ecomm.estore.data.EmailAddress;
 import com.ecomm.estore.data.repo.CustomerRepository;
 import com.ecomm.estore.util.Constants;
-import com.ecomm.estore.util.HttpPurgeClient;
 
 @RestController
 @RequestMapping("rest/customer")
@@ -27,14 +25,6 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerRepository customerRepo;
-	
-	@Autowired
-	@Value("${endpoint}")
-	private String endpoint;
-	
-	@Autowired
-	@Value("${fastly.service.id}")
-	private String fastlyServiceId;
 	
 	// create
 	@RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -49,10 +39,6 @@ public class CustomerController {
 			return new ResponseEntity<String>("{ \"status\": \"invalid customer create reqeust\"}", responseHeaders, HttpStatus.BAD_REQUEST);
 		}
 		Customer response = customerRepo.save(customer);
-		
-		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/customers");
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/customer/search");
 		
 		return new ResponseEntity<Customer>(response, responseHeaders, HttpStatus.OK);
 	}
@@ -110,11 +96,6 @@ public class CustomerController {
 		}
 		
 		Customer response = customerRepo.save(customer);
-		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/customer-"+response.getId());
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/customers");
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/customer?profile_id="+profileId);
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/customer/search");
 		
 		return new ResponseEntity<Customer>(response, responseHeaders, HttpStatus.OK);
 	}
@@ -133,14 +114,9 @@ public class CustomerController {
 			LOG.error("No customer data found by profile id <"+profileId+">");
             return new ResponseEntity<String>("{ \"status\": \"no customer records found by profile id - "+profileId+"\"}", responseHeaders, HttpStatus.BAD_REQUEST);
 		}
+		
 		long custId = entities.iterator().next().getId();
 		customerRepo.delete(entities);
-		
-		// purge cache
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/customer-"+custId);
-		HttpPurgeClient.call("http://"+endpoint+"/service/"+fastlyServiceId+"/customers");
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/customer?profile_id="+profileId);
-		//HttpPurgeClient.call("http://"+endpoint+"/rest/customer/search");
 		
 		return new ResponseEntity<String>("{ \"status\": \"success\"}", responseHeaders, HttpStatus.OK);
 	}

@@ -9,7 +9,7 @@ public class Constants {
 	public static final String HTTP_HEADER_HOST = "Host";
 	
 	public static final String HTTP_HEADER_CACHE_CONTROL_NO_CACHE = "no-cache";
-	public static final String HTTP_HEADER_SURROGATE_CONTROL_SERVER_STALE = "max-age=3600, stale-while-revalidate=30, stale-if-error=86400";
+	public static final String HTTP_HEADER_SURROGATE_CONTROL_SERVER_STALE = "max-age=86400, stale-while-revalidate=30, stale-if-error=86400";
 	public static final String HTTP_HEADER_SOFT_PURGE_VALUE = "1";
 	
 	public static final String HTTP_METHOD_PURGE = "PURGE";
